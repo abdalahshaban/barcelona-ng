@@ -1,0 +1,94 @@
+<div class="ui-g">
+    <div class="ui-g-12">
+        <div class="card card-w-title">
+            <h1>Mobile Phones</h1>
+            <p-table #dt [columns]="cols" styleClass="ui-table-cars" [value]="mobiles" [paginator]="true" [rows]="10" dataKey="id" selectionMode="single" [(selection)]="selectedMobile">
+                <ng-template pTemplate="caption">
+                    Global Search
+                    <div class="ui-table-globalfilter-container">
+                        <input type="text" pInputText size="50" placeholder="Global Filter" (input)="dt.filterGlobal($event.target.value, 'contains')" style="width:250px;">
+                    </div>
+                </ng-template>
+                <ng-template pTemplate="header" let-columns>
+                    <tr>
+                        <th *ngFor="let col of columns" [pSortableColumn]="col.field" [ngSwitch]="col.field">
+                            {{col.header}}
+                            <p-sortIcon [field]="col.field"></p-sortIcon>
+                        </th>
+                        <th style="width: 8em; text-align: center;">
+                            <button pButton type="button" icon="ui-icon-settings"></button>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th *ngFor="let col of columns" [ngSwitch]="col.field" style="padding: .5em;">
+                            <input *ngSwitchCase="'id'" pInputText type="text" placeholder="Contains" class="ui-column-filter" style="width: 100%; margin-top: 0;" (input)="dt.filter($event.target.value, col.field, 'contains')">
+                            <input *ngSwitchCase="'name'" pInputText type="text" placeholder="Contains" class="ui-column-filter" style="width: 100%; margin-top: 0;" (input)="dt.filter($event.target.value, col.field, 'contains')">
+                            <input *ngSwitchCase="'description'" pInputText type="text" placeholder="Contains" class="ui-column-filter" style="width: 100%; margin-top: 0;" (input)="dt.filter($event.target.value, col.field, 'contains')">
+                            <input *ngSwitchCase="'versionPrice'" pInputText type="text" placeholder="Equals" class="ui-column-filter" style="width: 100%; margin-top: 0;" (input)="dt.filter($event.target.value, col.field, 'equals')">
+                            <p-dropdown *ngSwitchCase="'deviceBrand'" appendTo="body" [options]="deviceBrandOptions" styleClass="ui-column-filter" [showClear]="true" [style]="{'min-width':'1em', 'width':'100%', 'margin-top':'0'}" placeholder="deviceBrand" (onChange)="dt.filter($event.value, col.field, 'equals')">
+                                <ng-template let-item pTemplate="selectedItem">
+                                    <span style="vertical-align:middle; margin-left: .5em">{{item.label}}</span>
+                                </ng-template>
+                                <ng-template let-deviceBrand pTemplate="item">
+                                    <div class="ui-helper-clearfix" style="position: relative;height: 25px;">
+                                        <div style="font-size:14px;float:right;margin-top:4px">{{deviceBrand.label}}</div>
+                                    </div>
+                                </ng-template>
+                            </p-dropdown>
+                            <p-dropdown *ngSwitchCase="'ram'" appendTo="body" [options]="ramOptions" styleClass="ui-column-filter" [showClear]="true" [style]="{'min-width':'1em', 'width':'100%', 'margin-top':'0'}" placeholder="ram" (onChange)="dt.filter($event.value, col.field, 'equals')">
+                                <ng-template let-item pTemplate="selectedItem">
+                                    <span style="vertical-align:middle; margin-left: .5em">{{item.label}}</span>
+                                </ng-template>
+                                <ng-template let-ram pTemplate="item">
+                                    <div class="ui-helper-clearfix" style="position: relative;height: 25px;">
+                                        <div style="font-size:14px;float:right;margin-top:4px">{{ram.label}}</div>
+                                    </div>
+                                </ng-template>
+                            </p-dropdown>
+                            <p-dropdown *ngSwitchCase="'connectivity'" appendTo="body" [options]="connectivityOptions" styleClass="ui-column-filter" [showClear]="true" [style]="{'min-width':'1em', 'width':'100%', 'margin-top':'0'}" placeholder="connectivity" (onChange)="dt.filter($event.value, col.field, 'equals')">
+                                <ng-template let-item pTemplate="selectedItem">
+                                    <span style="vertical-align:middle; margin-left: .5em">{{item.label}}</span>
+                                </ng-template>
+                                <ng-template let-connectivity pTemplate="item">
+                                    <div class="ui-helper-clearfix" style="position: relative;height: 25px;">
+                                        <div style="font-size:14px;float:right;margin-top:4px">{{connectivity.label}}</div>
+                                    </div>
+                                </ng-template>
+                            </p-dropdown>
+                            <p-dropdown *ngSwitchCase="'storage'" appendTo="body" [options]="storageOptions" styleClass="ui-column-filter" [showClear]="true" [style]="{'min-width':'1em', 'width':'100%', 'margin-top':'0'}" placeholder="storage" (onChange)="dt.filter($event.value, col.field, 'equals')">
+                                <ng-template let-item pTemplate="selectedItem">
+                                    <span style="vertical-align:middle; margin-left: .5em">{{item.label}}</span>
+                                </ng-template>
+                                <ng-template let-storage pTemplate="item">
+                                    <div class="ui-helper-clearfix" style="position: relative;height: 25px;">
+                                        <div style="font-size:14px;float:right;margin-top:4px">{{storage.label}}</div>
+                                    </div>
+                                </ng-template>
+                            </p-dropdown>
+                            <p-multiSelect *ngSwitchCase="'color'" [options]="colorOptions" [filter]="false"  styleClass="ui-column-filter" [style]="{'width':'100%', 'margin-top':'0'}"  defaultLabel="color" (onChange)="dt.filter($event.value, col.field, 'in')"></p-multiSelect>
+                        </th>
+                        <th style="width: 8em;">
+                        </th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-rowData let-columns="columns">
+                    <tr [pSelectableRow]="rowData" [pEditableRow]="rowData">
+                        <td>{{rowData.id}}</td>
+                        <td>{{rowData.name}}</td>
+                        <td>{{rowData.description}}</td>
+                        <td>{{rowData.versionPrice}}</td>
+                        <td>{{rowData.deviceBrand}}</td>
+                        <td>{{rowData.ram}}</td>
+                        <td>{{rowData.connectivity}}</td>
+                        <td>{{rowData.storage}}</td>
+                        <td>{{rowData.color}}</td>
+                        <td>
+                            <button pButton type="button" class="ui-button-success" icon="ui-icon-search" style="margin-right: .5em"></button>
+                            <button pButton type="button" class="orange-btn" icon="ui-icon-edit">Edit</button>
+                        </td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </div>
+    </div>
+</div>

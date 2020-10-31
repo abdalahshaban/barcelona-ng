@@ -9,27 +9,27 @@
                     <div class="layout-tabmenu-tooltip-text">Features</div>
                 </div>
             </li>
-            <li [ngClass]="{'active-item':app.activeTabIndex === 1}">
+            <!-- <li [ngClass]="{'active-item':app.activeTabIndex === 1}">
                 <a href="#" pRipple class="tabmenuitem-link" (click)="app.onTabClick($event, 1)"><i class="pi pi-fw pi-inbox"></i></a>
                 <div class="layout-tabmenu-tooltip">
                     <div class="layout-tabmenu-tooltip-arrow"></div>
                     <div class="layout-tabmenu-tooltip-text">Inbox</div>
                 </div>
-            </li>
-            <li [ngClass]="{'active-item':app.activeTabIndex === 2}">
+            </li> -->
+            <!-- <li [ngClass]="{'active-item':app.activeTabIndex === 2}">
                 <a href="#" pRipple class="tabmenuitem-link" (click)="app.onTabClick($event, 2)"><i class="pi pi-fw pi-calendar"></i></a>
                 <div class="layout-tabmenu-tooltip">
                     <div class="layout-tabmenu-tooltip-arrow"></div>
                     <div class="layout-tabmenu-tooltip-text">Calendar</div>
                 </div>
-            </li>
-            <li [ngClass]="{'active-item':app.activeTabIndex === 3}">
+            </li> -->
+            <!-- <li [ngClass]="{'active-item':app.activeTabIndex === 3}">
                 <a href="#" pRipple class="tabmenuitem-link" (click)="app.onTabClick($event, 3)"><i class="pi pi-fw pi-chart-bar"></i></a>
                 <div class="layout-tabmenu-tooltip">
                     <div class="layout-tabmenu-tooltip-arrow"></div>
                     <div class="layout-tabmenu-tooltip-text">Projects</div>
                 </div>
-            </li>
+            </li> -->
             <li [ngClass]="{'active-item':app.activeTabIndex === 4}">
                 <a href="#" pRipple class="tabmenuitem-link" (click)="app.onTabClick($event, 4)"><i class="pi pi-user"></i></a>
                 <div class="layout-tabmenu-tooltip">
@@ -48,7 +48,7 @@
                     <app-menu></app-menu>
                 </app-sidebarTabContent>
             </div>
-            <div class="layout-tabmenu-content" [ngClass]="{'layout-tabmenu-content-active': app.activeTabIndex === 1}">
+            <!-- <div class="layout-tabmenu-content" [ngClass]="{'layout-tabmenu-content-active': app.activeTabIndex === 1}">
                 <div class="layout-submenu-title clearfix">
                     <span>Inbox</span>
                     <a href="#" class="menu-button pi pi-bars" (click)="app.closeSidebar($event)"></a>
@@ -105,8 +105,8 @@
                         </div>
                     </div>
                 </app-sidebarTabContent>
-            </div>
-            <div class="layout-tabmenu-content" [ngClass]="{'layout-tabmenu-content-active': app.activeTabIndex === 2}">
+            </div> -->
+            <!-- <div class="layout-tabmenu-content" [ngClass]="{'layout-tabmenu-content-active': app.activeTabIndex === 2}">
                 <div class="layout-submenu-title clearfix">
                     <span>Calendar</span>
                     <a href="#" class="menu-button pi pi-bars" (click)="app.closeSidebar($event)"></a>
@@ -161,8 +161,8 @@
                         </ul>
                     </div>
                 </app-sidebarTabContent>
-            </div>
-            <div class="layout-tabmenu-content" [ngClass]="{'layout-tabmenu-content-active': app.activeTabIndex === 3}">
+            </div> -->
+            <!-- <div class="layout-tabmenu-content" [ngClass]="{'layout-tabmenu-content-active': app.activeTabIndex === 3}">
                 <div class="layout-submenu-title clearfix">
                     <span>Projects</span>
                     <a href="#" class="menu-button pi pi-bars" (click)="app.closeSidebar($event)"></a>
@@ -213,7 +213,7 @@
                         </ul>
                     </div>
                 </app-sidebarTabContent>
-            </div>
+            </div> -->
             <div class="layout-tabmenu-content" [ngClass]="{'layout-tabmenu-content-active': app.activeTabIndex === 4}">
                 <div class="layout-submenu-title clearfix">
                     <span>Team</span>
